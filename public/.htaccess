@@ -1,0 +1,12 @@
+##AuthUserFile /var/www/vhosts/friseur-finder.de/httpdocs_new/stylofish/public/.htpasswd
+##AuthName "Dave's Login Area"
+##AuthType Basic
+
+##require user benny
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+
