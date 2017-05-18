@@ -25,8 +25,8 @@ Flight::set('navigation', $navigation);
 Flight::set('siteTitle', $siteTitle);
 Flight::set('siteDescription', $siteDescription);
 
-Flight::set('baseURL', 'http://www.gesundes-leben.net/');
-//Flight::set('baseURL', 'http://localhost/gesundes-leben/public/');
+Flight::set('baseURL', 'your url');
+
 
 Flight::register('view', 'Smarty', array(), function($smarty){
     $smarty->template_dir = '../app/view/templates/';
