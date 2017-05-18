@@ -1,11 +1,15 @@
-	<div class="footer">
-    <span class="fooBrand">GESUNDES LEBEN</span><br>
-    <a href="ueber-uns/impressum">Impressum</a>
- 
-    <div class="fooRights">
-        Alle Angaben ohne Gew&auml;hr. Alle Preise inkl. der gesetzlichen Mehrwertsteuer.
-        <br>Copyright &copy; 2015 GESUNDES LEBEN.
-    </div>
+		<div class="footer">
+			<div class="fooleft">
+    		<span class="fooBrand">Title</span><br>
+    		<a href="{$baseURL}/ueber-uns/impressum">Impressum</a>
+    		<a href="{$baseURL}/ueber-uns/agb">AGB</a>
+    		<a href="{$baseURL}/ueber-uns/datenschutz">Datenschutz</a>
+    		<a href="#" class="contactbutton">Kontakt</a>
+ 			</div>
+    	<div class="fooRights">
+        <br>Copyright &copy; 2017 Title.
+    	</div>
+		</div>
 	</div>
 </body>
 </html>

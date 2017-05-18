@@ -1,55 +1,65 @@
+{assign var="site" value="overview"}
 {include file='header.tpl'}
 
 <div class="container-fluid">
 	<div class="well wellCat" id="wrapper">
   	<div class="row">
-  	
-    	<div class="col-xs-12">	{* breadcrums *}
-      	<div  class="breadcrumb clearfix" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-    			<a href="{$baseURL}" itemprop="url">
-        		<span itemprop="title">Startseite</span>
-    			</a>
-    			<span class="breadSlash">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
-					<span class="breadActive">{$activeNavItem}</span>
-				</div>
-      </div>	{* /breadcrums *}
-      
-      <div class="col-md-12 col-xs-12">
+  	{* breadcrums *}				
+			<ol class="breadcrumb">
+				<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+					<a itemprop="url" title="Startseite" href="{$baseURL}">
+						<span itemprop="title">Startseite</span>
+					</a>
+				</li>
+				<li class="active">
+					<i>{$activeNavItem}</i>
+				</li>
+			</ol>
+		{* /breadcrums *}
+		{if $activeNavItemURL == "vitamine"}
+     
+      <div class="col-md-12 col-xs-12 contentarea">
       	<h1>{$activeNavItem}</h1>
       	
 				{* categorytext *}
         
         {* Produkte oder Kategorieübersicht *}
         	
-        {foreach $products as $product}      	
- 		   		<div class="itembox" col-md-6 col-xs-12>
-			   		<div class="imagebox">
-					 		<img src="{$baseURL}assets/productimages/{$product['image']}" />
-			   		</div>
-				 		<div class="infobox">
-			   			<div class="name">{$product['name']}</div>
-			   	 		<div class="prodinfo"></div>
-			   	 		<div class="price"></div>
-			   	 		<a href="{$product['shopurl']}" class="button">zum shop</a>
-							<a href="{$baseURL}{$product['url']}" class="button">zum Produkt</a>
-							<div class="productinfo"><span>{$product['productinfo1']}</span></div>
-							<div class="productinfo"><span>{$product['productinfo2']}</span></div>
-							<div class="productinfo"><span>{$product['productinfo3']}</span></div>
-						</div>
-		   		</div>
-      	{/foreach}
+        {assign var="index" value=0}
+        {foreach $products as $product}   
+
         
-        {* -----------------  *}
-        
-        {* Pagnation *}
-        
-        
-        
-        {* Lange Beschreibungen *}
-                      
-			
+		   		{assign var="index" value=$index+1}
+      	{/foreach}			
     	</div>
+    	
+    	<div class="longinfo">
+				{$longtext}
+			</div>
+    	
   	</div>	
+  	<script type="text/javascript">
+  		$( document ).ready(function() { 				
+  			window.onresize = function(e) {
+  			calcTeaserSize();
+  			}
+  			calcTeaserSize();
+  				
+  			function calcTeaserSize(){ 		
+  				var contSize = parseInt($("#main").css('width'));	
+  									
+  				if(contSize < 1200){
+  					var newSize = contSize - 1200;
+  					$("#main.overview").css('background-position-x',newSize + 'px');
+  					$("#main.overview").css('background-size','inherit');
+  				}  
+  				else{
+  					$("#main.overview").css('background-position-x','0px');
+  					$("#main.overview").css('background-size','contain');
+  				}		
+  			}
+  		});		
+  </script>
   	{include file='footer.tpl'}
 	</div>
 		

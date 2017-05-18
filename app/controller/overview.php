@@ -18,11 +18,12 @@ class Overview extends App {
   	
   	$urlData = $this->urlModel->getUrlData($topcategory);
   		
-		$values["activeNavItem"] = $this->getActiveNavItem($values["topnav"],$topcategory);
-		$values["activeNavItemURL"] = $this->getActiveNavItem($values["topnav"],$topcategory);
+		$values["activeNavItem"] = $this->getActiveNavItem($values["topnav"],$topcategory,"name");
+		$values["activeNavItemURL"] = $this->getActiveNavItem($values["topnav"],$topcategory,"url");
 		 	
   	$categories = array(0 => $topcategory);
   	array_push($products, $this->productModel->getProducts($categories,$page, $this->ProductsPerPage));
+  	$values["longtext"] = $this->productModel->getProductLongText($topcategory);  	
   	$values['dataCount'] = $this->productModel->getDataCount($categories);
   	
   	$values['siteTitle'] = $this->siteModel->getSiteTitle($topcategory);
@@ -35,13 +36,13 @@ class Overview extends App {
   } 
   
   
-  public function getActiveNavItem($navigation,$topcategory)
+  public function getActiveNavItem($navigation,$topcategory,$type="name")
   {
   	foreach($navigation as $nav)
 		{
   		if($nav['url'] == $topcategory)
 			{
-				return $nav['name'];
+					return $nav[$type];
   		}
   	}
 		return '';

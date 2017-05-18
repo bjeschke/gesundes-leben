@@ -20,6 +20,7 @@ class Site extends App {
 		
 		$values['siteTitle'] = '';
   	$values['siteDescription'] = '';
+  	$values['siteName'] = ucfirst($url);
 		
 		$this->values = $values;			
 		$this->renderTbl('site');				

@@ -15,6 +15,14 @@ class Products {
 		return $values[0];
 	}
 	
+	public function getProductDataByID($id) {
+		return $this->dbHandler->getProductDataByID($id)[0];		
+	}
+	
+	public function getProductDataByIDs($arrayID){
+		return $this->dbHandler->getProductDataByIDs($arrayID);		
+	}
+	
 	public function getProducts($categories,$page, $productsPerPage){
 			
 		$values = $this->dbHandler->getCategoryData($categories,$page,$productsPerPage);

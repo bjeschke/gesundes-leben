@@ -20,6 +20,28 @@ class dbHandler{
 	}
 	
 	
+	public function getProductDataByID($id) {
+	
+		$sql = 'SELECT * FROM products WHERE id = "'.$id.'"';
+		
+		return $this->db->get_result($sql);
+	}
+	
+	public function getProductDataByIDs($arrayIDs) {
+		
+		$sql = 'SELECT * FROM products WHERE ';
+				
+		for($i = 0;$i < count($arrayIDs);$i++) {
+			if($i > 0)
+				$sql .= " OR ";
+		
+			$sql .= 'id = "'.$arrayIDs[$i].'"';
+		}
+			
+		return $this->db->get_result($sql);
+	}
+	
+	
 	/*
 	* @param $category array
 	* @param $page int
@@ -37,14 +59,16 @@ class dbHandler{
 		
 		$itemsShow = $page * $productsPerPage;
 		$offset = ($page - 1) * $productsPerPage;
-		$limit = 'LIMIT '.$offset.','.$itemsShow;
+		$limit = ' LIMIT '.$offset.','.$itemsShow;
+		$sort = ' ORDER BY position';
 		
 		//$sql = 'SELECT p.*, c.*, s.* FROM products p
 		//				LEFT JOIN products_shops s ON s.product_id = p.id 
 		//				LEFT JOIN product_content c ON c.product_id = p.id
 		//				WHERE ('.$innerSQL.')';
 						
-		$sql = 'SELECT * FROM products WHERE ('.$innerSQL.') '.$limit;		
+		$sql = 'SELECT * FROM products WHERE ('.$innerSQL.')'.$sort.$limit;	
+
 		return $this->db->get_result($sql);
 	}
 	

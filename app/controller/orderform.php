@@ -3,24 +3,24 @@
 class OrderForm extends App {  
 	
 	function __construct()
-	{
-		$this->productModel = new Products();
+	{	
+		//$this->productModel = new Products();
 	}  
   	
   
-  public function display($productUrl) 
+  public function display() 
   { 
   	parent::getValues();
   	
   	$values = $this->values;
-		$values["product"] = $this->productModel->getProductData($productUrl);
+
+		$values["product"] = 'bla'; 	
+		$values["category"] = 'bla'; 	
+		$values["navCategory"] = 'bla';
 		
-		$values["category"] = $this->productModel->getCategory($values["product"]["category"],$this->navigation); 	
-		$values["longtext"] = $this->productModel->getProductLongText($productUrl);
-		$values["navCategory"] = $this->getNavCategory($values["category"]);
-		
-		$values["siteTitle"] = $values["product"]["siteTitle"];
-		$values["siteDescription"] =  $values["product"]["siteDescription"];
+		$values["siteTitle"] = "Warenkorb";
+		$values["siteDescription"] =  "Warenkorb";
+		$values["site"] = "orderform";
 				
 		$this->values = $values;		
 		

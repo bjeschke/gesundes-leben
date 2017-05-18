@@ -20,10 +20,9 @@ class Detail extends App {
 		$values["navCategory"] = $this->getNavCategory($values["category"]);
 		
 		$values["siteTitle"] = $values["product"]["siteTitle"];
-		$values["siteDescription"] =  $values["product"]["siteDescription"];
-				
+		$values["siteDescription"] =  $values["product"]["siteDescription"];				
 		$this->values = $values;		
-		
+
 		$this->renderTbl('detail');
   }  
     
